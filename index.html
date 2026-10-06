@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>¿Necesitas otro curso… o un método? | Ale Torres</title>
+<meta name="description" content="Test gratuito de 2 minutos. Descubre si necesitas otro curso o un método paso a paso.">
+<meta property="og:title" content="¿Necesitas otro curso… o un método?">
+<meta property="og:description" content="Descúbrelo en 2 minutos. Test gratuito de Ale Torres.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,500&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f7f2ea;
+    --card:#fffdf9;
+    --ink:#1c1a17;
+    --soft:#6b645a;
+    --line:#e6ddd0;
+    --red:#c8242c;
+    --red-soft:#fbe9e7;
+    --sand:#efe6d8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{background:var(--paper);color:var(--ink);font-family:'Outfit',sans-serif;
+    font-size:19px;line-height:1.6;min-height:100vh}
+  .wrap{max-width:600px;margin:0 auto;padding:22px 18px 56px}
+
+  /* encabezado */
+  .top{display:flex;align-items:center;gap:12px;margin-bottom:34px}
+  .avatar{width:44px;height:44px;border-radius:50%;background:var(--ink);color:var(--paper);
+    display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:600;font-size:17px}
+  .top-name{font-weight:600;font-size:16px;line-height:1.2}
+  .top-name small{display:block;color:var(--soft);font-weight:400;font-size:14px}
+
+  .screen{display:none}
+  .screen.active{display:block;animation:in .45s ease}
+  @keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+  .eyebrow{display:inline-block;background:var(--red-soft);color:var(--red);font-weight:600;
+    font-size:14px;letter-spacing:.04em;padding:6px 14px;border-radius:30px;margin-bottom:18px}
+  h1{font-family:'Fraunces',serif;font-weight:600;font-size:38px;line-height:1.12;letter-spacing:-.01em;margin-bottom:18px}
+  h1 i{font-style:italic;font-weight:500;color:var(--red)}
+  h2{font-family:'Fraunces',serif;font-weight:600;font-size:28px;line-height:1.2;margin-bottom:14px}
+  .lead{color:var(--soft);font-size:20px;margin-bottom:28px}
+
+  .gets{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px 20px 8px;margin-bottom:28px}
+  .gets p{font-weight:600;margin-bottom:12px}
+  .gets li{list-style:none;display:flex;gap:12px;margin-bottom:12px;color:var(--soft)}
+  .gets li span{flex:0 0 26px;height:26px;border-radius:50%;background:var(--ink);color:var(--paper);
+    display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;margin-top:2px}
+
+  .btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;border:none;cursor:pointer;
+    border-radius:16px;padding:19px 22px;font-family:'Outfit',sans-serif;font-weight:600;font-size:20px;
+    text-decoration:none;background:var(--red);color:#fff;box-shadow:0 6px 0 #8f1a20;transition:transform .12s,box-shadow .12s}
+  .btn:active{transform:translateY(4px);box-shadow:0 2px 0 #8f1a20}
+  .btn.dark{background:var(--ink);box-shadow:0 6px 0 #000}
+  .btn.outline{background:transparent;color:var(--ink);border:2px solid var(--ink);box-shadow:none}
+  .note{text-align:center;color:var(--soft);font-size:15px;margin-top:16px}
+
+  /* preguntas */
+  .qhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-size:15px;color:var(--soft)}
+  .dots{display:flex;gap:6px}
+  .dots i{width:28px;height:7px;border-radius:7px;background:var(--line);transition:background .3s}
+  .dots i.done{background:var(--red)}
+  .qnum{font-family:'Fraunces',serif;font-style:italic;color:var(--red);font-size:20px;margin:22px 0 6px}
+  .qtext{font-family:'Fraunces',serif;font-weight:600;font-size:27px;line-height:1.25;margin-bottom:8px}
+  .qhelp{color:var(--soft);font-size:17px;margin-bottom:22px}
+  .opt{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:var(--card);color:var(--ink);
+    border:2px solid var(--line);border-radius:16px;padding:17px 18px;margin-bottom:12px;
+    font-family:'Outfit',sans-serif;font-size:19px;line-height:1.35;cursor:pointer;transition:border-color .2s,background .2s}
+  .opt .l{flex:0 0 34px;height:34px;border-radius:50%;border:2px solid var(--line);display:flex;
+    align-items:center;justify-content:center;font-weight:600;font-size:16px;color:var(--soft);transition:all .2s}
+  .opt:hover{border-color:#cbbfae}
+  .opt.sel{border-color:var(--red);background:var(--red-soft)}
+  .opt.sel .l{background:var(--red);border-color:var(--red);color:#fff}
+  .back{background:none;border:none;color:var(--soft);font-family:'Outfit',sans-serif;font-size:17px;cursor:pointer;padding:10px 0;margin-top:4px}
+
+  /* formulario */
+  .ready{width:64px;height:64px;border-radius:50%;background:var(--red-soft);color:var(--red);display:flex;
+    align-items:center;justify-content:center;font-size:30px;margin-bottom:18px}
+  label{display:block;font-weight:600;margin:20px 0 8px}
+  label small{display:block;font-weight:400;color:var(--soft);font-size:15px}
+  input{width:100%;background:var(--card);color:var(--ink);border:2px solid var(--line);border-radius:14px;
+    padding:17px 16px;font-size:20px;font-family:'Outfit',sans-serif}
+  input:focus{outline:none;border-color:var(--ink)}
+  .err{color:var(--red);font-size:16px;min-height:24px;margin:12px 0 6px}
+
+  /* resultado */
+  .meter{display:flex;gap:8px;margin:6px 0 26px}
+  .meter div{flex:1;text-align:center;font-size:13px;color:var(--soft);line-height:1.3}
+  .meter div b{display:block;height:8px;border-radius:8px;background:var(--line);margin-bottom:8px}
+  .meter div.on{color:var(--ink);font-weight:600}
+  .meter div.on b{background:var(--red)}
+  .rcard{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px 22px;margin-bottom:16px}
+  .rcard h3{font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:var(--red);margin-bottom:10px}
+  .rcard p{margin-bottom:12px}
+  .rcard p:last-child{margin-bottom:0}
+  .rcard strong{font-weight:600}
+  .next{background:var(--ink);color:var(--paper);border-radius:20px;padding:22px;margin-bottom:40px}
+  .next h3{font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:#f3a8a3;margin-bottom:8px}
+
+  .sep{display:flex;align-items:center;gap:14px;color:var(--soft);font-family:'Fraunces',serif;font-style:italic;font-size:19px;margin-bottom:12px}
+  .sep:before,.sep:after{content:"";flex:1;height:1px;background:var(--line)}
+  .check{display:flex;gap:14px;background:var(--card);border:2px solid var(--line);border-radius:18px;
+    padding:18px;margin-bottom:12px;cursor:pointer;transition:border-color .2s,background .2s}
+  .check .box{flex:0 0 30px;height:30px;border-radius:9px;border:2px solid #cbbfae;display:flex;
+    align-items:center;justify-content:center;color:#fff;font-weight:700;margin-top:2px;transition:all .2s}
+  .check.on{border-color:var(--ink)}
+  .check.on .box{background:var(--ink);border-color:var(--ink)}
+  .check h4{font-size:20px;font-weight:600;line-height:1.3;margin-bottom:4px}
+  .check p{color:var(--soft);font-size:17px}
+  .tally{text-align:center;color:var(--soft);font-size:16px;margin:8px 0 40px}
+  .tally b{color:var(--ink)}
+
+  .letter{background:var(--sand);border-radius:22px;padding:28px 24px;margin-bottom:22px}
+  .letter p{margin-bottom:14px}
+  .letter .big{font-family:'Fraunces',serif;font-weight:600;font-size:26px;line-height:1.25;margin-bottom:16px}
+  .letter .firma{font-family:'Fraunces',serif;font-style:italic;font-size:22px;margin-top:6px}
+  .stack{display:grid;gap:14px}
+  .foot{text-align:center;color:var(--soft);font-size:14px;letter-spacing:.2em;margin-top:40px}
+
+  @media (max-width:390px){
+    body{font-size:18px} h1{font-size:32px} .qtext{font-size:24px} .lead{font-size:18px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top">
+    <div class="avatar">AT</div>
+    <div class="top-name">Ale Torres<small>Negocio digital paso a paso</small></div>
+  </div>
+
+  <!-- INICIO -->
+  <section class="screen active" id="s-intro">
+    <span class="eyebrow">Test gratuito · 2 minutos</span>
+    <h1>¿Necesitas otro curso… <i>o un método?</i></h1>
+    <p class="lead">Si has invertido en cursos y sigues en el mismo lugar, este test te va a dar claridad. Responde con total honestidad: nadie más ve tus respuestas.</p>
+    <div class="gets">
+      <p>Al terminar recibes:</p>
+      <ul>
+        <li><span>1</span>Tu perfil de aprendizaje y qué te está frenando.</li>
+        <li><span>2</span>Tu siguiente paso concreto, para hoy.</li>
+        <li><span>3</span>Los 5 puntos que debe tener un curso antes de que vuelvas a invertir.</li>
+      </ul>
+    </div>
+    <button class="btn" onclick="start()">Empezar el test →</button>
+    <p class="note">5 preguntas · sin respuestas correctas o incorrectas</p>
+  </section>
+
+  <!-- PREGUNTAS -->
+  <section class="screen" id="s-quiz">
+    <div class="qhead"><div class="dots" id="dots"></div><span id="count"></span></div>
+    <div class="qnum" id="qnum"></div>
+    <div class="qtext" id="q"></div>
+    <div class="qhelp" id="qhelp"></div>
+    <div id="opts"></div>
+    <button class="back" id="backBtn" onclick="prev()">← Volver</button>
+  </section>
+
+  <!-- DATOS -->
+  <section class="screen" id="s-form">
+    <div class="ready">✓</div>
+    <h2>Tu resultado está listo</h2>
+    <p class="lead">Déjame tu nombre y tu WhatsApp para mostrártelo. Así también puedo enviarte los siguientes pasos.</p>
+    <label for="nombre">¿Cómo te llamas?</label>
+    <input id="nombre" type="text" autocomplete="given-name" placeholder="Tu nombre">
+    <label for="wa">Tu WhatsApp <small>Con código de país. Ejemplo: +52 998 123 4567</small></label>
+    <input id="wa" type="tel" inputmode="tel" autocomplete="tel" placeholder="+52 ...">
+    <div class="err" id="err"></div>
+    <button class="btn" onclick="submitLead()">Ver mi resultado →</button>
+    <p class="note">🔒 Tus datos son privados. Nada de spam.</p>
+  </section>
+
+  <!-- RESULTADO -->
+  <section class="screen" id="s-result">
+    <span class="eyebrow" id="r-hello"></span>
+    <h1 id="r-title"></h1>
+    <div class="meter" id="meter">
+      <div data-k="coleccionista"><b></b>Coleccionista de información</div>
+      <div data-k="freno"><b></b>Listo, pero con freno</div>
+      <div data-k="ejecutar"><b></b>Listo para ejecutar</div>
+    </div>
+    <div class="rcard"><h3>Lo que esto significa</h3><div id="r-body"></div></div>
+    <div class="next"><h3>Tu siguiente paso, hoy</h3><p id="r-next"></p></div>
+
+    <div class="sep">antes de tu próximo curso</div>
+    <h2>Los 5 infaltables de un curso que sí te da resultados</h2>
+    <p class="lead" style="font-size:18px">Úsalos como lista de revisión. Toca cada punto que cumpla el curso que estás pensando comprar.</p>
+    <div id="checks"></div>
+    <div class="tally" id="tally"></div>
+
+    <div class="letter">
+      <p class="big">No necesitas saber más. Necesitas un método paso a paso.</p>
+      <p>Después de más de 20 años formando equipos, aprendí que la mayoría no falla por falta de capacidad, sino porque le enseñan como si ya supiera.</p>
+      <p>Esta semana te cuento en mi Instagram cómo se ve un método así, explicado desde cero.</p>
+      <p class="firma">— Ale</p>
+    </div>
+    <div class="stack">
+      <a class="btn" id="waBtn" href="#" target="_blank" rel="noopener">Envíame tu resultado por WhatsApp</a>
+      <a class="btn outline" href="https://www.instagram.com/aletorreslatam/" target="_blank" rel="noopener">🎁 Sígueme y recibe un regalo sorpresa</a>
+    </div>
+    <p class="note">Al seguirme, escríbeme <b>REGALO</b> por mensaje en Instagram y te lo envío.</p>
+    <div class="foot">MENOS INFORMACIÓN · MÁS EJECUCIÓN</div>
+  </section>
+</div>
+
+<script>
+/* ===== CONFIGURACIÓN =====
+   Pega aquí el webhook de Make para guardar cada prospecto.
+   Si se deja vacío, el test funciona igual pero no guarda datos. */
+const CONFIG = {
+  webhookUrl: "",
+  funnelId: "otrocurso",
+  whatsapp: "529871412185"   // ← tu WhatsApp: código de país + número, sin espacios ni "+"
+};
+
+const QUESTIONS = [
+  { q:"Piensa en el último curso que compraste. ¿Qué pasó con él?",
+    h:"Sé honesto contigo: esto es solo para ti.",
+    o:[["Lo terminé y lo puse en práctica",3],["Lo terminé, pero no lo apliqué",2],["Se quedó a medias",1]] },
+  { q:"Con todo lo que ya sabes, ¿tienes claro qué hacer mañana para avanzar?",
+    h:"No lo que te gustaría hacer algún día: el paso concreto de mañana.",
+    o:[["Sí, sé exactamente cuál es mi siguiente paso",3],["Tengo muchas ideas, pero no sé cuál va primero",2],["No, sé muchas cosas, pero no sé por dónde empezar",1]] },
+  { q:"Cuando decides comprar un curso, ¿qué pesa más?",
+    h:"Piensa en la última vez que diste clic en «comprar».",
+    o:[["Que resuelve algo concreto que necesito ahora",3],["Que podría servirme más adelante",2],["La emoción del momento o una promesa que sonaba muy bien",1]] },
+  { q:"Cuando algo no te sale a la primera, ¿qué sueles hacer?",
+    h:"Por ejemplo, una herramienta que no entiendes o un paso que no funciona.",
+    o:[["Busco ayuda hasta resolverlo",3],["Lo dejo para después… y a veces no regreso",2],["Lo abandono y busco otro curso",1]] },
+  { q:"¿Cuánto tiempo real a la semana puedes dedicar a aplicar lo que aprendes?",
+    h:"Tiempo para hacer, no solo para ver videos.",
+    o:[["Más de 5 horas",3],["Entre 2 y 5 horas",2],["Menos de 2 horas, o no lo tengo claro",1]] }
+];
+
+const RESULTS = {
+  coleccionista:{
+    title:"Coleccionista de información",
+    body:`<p>Has aprendido mucho, pero <strong>casi nada se ha convertido en acción</strong>. Y no es falta de capacidad: cada curso te dio más información, pero ninguno te dio un orden.</p>
+          <p>Por eso otro curso probablemente te dejaría igual. Lo que te falta es <strong>un camino claro, paso a paso</strong>, donde cada lección termine en algo que haces ese mismo día.</p>`,
+    next:"Elige UNA sola cosa de lo que ya aprendiste y aplícala esta semana. Solo una. Terminar algo pequeño vale más que empezar algo grande."},
+  freno:{
+    title:"Listo, pero con freno",
+    body:`<p>Sabes más de lo que crees y tienes ideas claras. El problema no es lo que sabes, sino <strong>lo que pasa cuando te atoras</strong>.</p>
+          <p>Más contenido no te va a destrabar. En tu caso, lo que marca la diferencia es <strong>acompañamiento</strong>: alguien que te diga qué sigue y te ayude cuando algo no sale.</p>`,
+    next:"Escribe en una hoja el punto exacto donde te atoraste la última vez. Ese es tu verdadero siguiente paso, no un curso nuevo."},
+  ejecutar:{
+    title:"Listo para ejecutar",
+    body:`<p>Tienes base, claridad y disposición. Estás en un muy buen momento para avanzar.</p>
+          <p>Lo que te puede acelerar no es más información, sino <strong>un método con orden y medición</strong>: saber qué va primero, qué puede esperar y cómo medir tu avance cada semana.</p>`,
+    next:"Antes de invertir en algo nuevo, revísalo con los 5 infaltables de abajo. Si no cumple al menos 4, no es para ti."}
+};
+
+const MUSTS = [
+  ["Práctica en cada lección","Si solo te da teoría, no te va a cambiar nada. Cada clase debe terminar con una acción que puedas hacer ese mismo día."],
+  ["Paso a paso, aunque empieces desde cero","Un buen curso no asume que ya sabes. Te explica cada botón, cada pantalla, cada paso."],
+  ["Una forma de medir tu avance","Si no ves cuánto llevas, es fácil abandonar. Busca metas, tareas cumplidas o niveles que muestren tu progreso."],
+  ["Acompañamiento real","Que alguien responda tus dudas y te ayude cuando te atores. Los videos solos no bastan."],
+  ["Promesas honestas","Desconfía de quien te garantiza prospectos, ventas o ingresos. Un buen curso te promete un método, no milagros."]
+];
+
+let idx = 0;
+const answers = new Array(QUESTIONS.length).fill(null);
+const L = ["A","B","C"];
+
+function show(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function start(){ idx=0; renderQ(); show('s-quiz'); }
+
+function renderQ(){
+  const item = QUESTIONS[idx];
+  document.getElementById('dots').innerHTML = QUESTIONS.map((_,i)=>`<i class="${i<=idx?'done':''}"></i>`).join('');
+  document.getElementById('count').textContent = `${idx+1} de ${QUESTIONS.length}`;
+  document.getElementById('qnum').textContent = `Pregunta ${idx+1}`;
+  document.getElementById('q').textContent = item.q;
+  document.getElementById('qhelp').textContent = item.h;
+  const box = document.getElementById('opts'); box.innerHTML='';
+  item.o.forEach(([text],i)=>{
+    const b=document.createElement('button');
+    b.className='opt'+(answers[idx]===i?' sel':'');
+    b.innerHTML=`<span class="l">${L[i]}</span><span>${text}</span>`;
+    b.onclick=()=>pick(i);
+    box.appendChild(b);
+  });
+  document.getElementById('backBtn').style.visibility = idx===0?'hidden':'visible';
+}
+function pick(i){
+  answers[idx]=i;
+  document.querySelectorAll('#opts .opt').forEach((b,j)=>b.classList.toggle('sel',j===i));
+  setTimeout(()=>{
+    if(idx<QUESTIONS.length-1){ idx++; renderQ(); }
+    else show('s-form');
+  },300);
+}
+function prev(){ if(idx>0){ idx--; renderQ(); } }
+
+const score = ()=>answers.reduce((t,a,i)=>t+QUESTIONS[i].o[a][1],0);
+const profile = s => s<=8 ? 'coleccionista' : (s<=11 ? 'freno' : 'ejecutar');
+function getUTM(){
+  const p=new URLSearchParams(location.search), out={};
+  ['utm_source','utm_medium','utm_campaign','utm_content'].forEach(k=>{ if(p.get(k)) out[k]=p.get(k); });
+  return out;
+}
+
+async function submitLead(){
+  const nombre=document.getElementById('nombre').value.trim();
+  const wa=document.getElementById('wa').value.trim();
+  const err=document.getElementById('err');
+  if(nombre.length<2){ err.textContent='Escribe tu nombre, por favor.'; return; }
+  if(wa.replace(/\D/g,'').length<10){ err.textContent='Revisa tu WhatsApp: incluye el código de país.'; return; }
+  err.textContent='';
+  const s=score(), key=profile(s);
+  if(CONFIG.webhookUrl){
+    try{
+      await fetch(CONFIG.webhookUrl,{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({
+          lead_id:(crypto.randomUUID?crypto.randomUUID():String(Date.now())),
+          funnel_id:CONFIG.funnelId, nombre, whatsapp:wa, puntaje:s,
+          resultado:RESULTS[key].title,
+          respuestas:answers.map((a,i)=>QUESTIONS[i].o[a][0]),
+          fecha:new Date().toISOString(), ...getUTM()
+        })});
+    }catch(e){}
+  }
+  renderResult(nombre.split(' ')[0],key);
+}
+
+function renderResult(nombre,key){
+  const r=RESULTS[key];
+  document.getElementById('r-hello').textContent = `${nombre}, este es tu resultado`;
+  document.getElementById('r-title').textContent = r.title;
+  document.getElementById('r-body').innerHTML = r.body;
+  document.getElementById('r-next').textContent = r.next;
+  document.querySelectorAll('#meter div').forEach(d=>d.classList.toggle('on',d.dataset.k===key));
+  const msg = `Hola Ale, soy ${nombre}. Hice tu test y mi resultado fue: ${r.title}. Me gustaría saber más.`;
+  document.getElementById('waBtn').href = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`;
+  const box=document.getElementById('checks'); box.innerHTML='';
+  MUSTS.forEach(([t,d],i)=>{
+    const el=document.createElement('div');
+    el.className='check';
+    el.innerHTML=`<div class="box"></div><div><h4>${i+1}. ${t}</h4><p>${d}</p></div>`;
+    el.onclick=()=>{ el.classList.toggle('on'); el.querySelector('.box').textContent=el.classList.contains('on')?'✓':''; tally(); };
+    box.appendChild(el);
+  });
+  tally();
+  show('s-result');
+}
+function tally(){
+  const n=document.querySelectorAll('.check.on').length;
+  const t=document.getElementById('tally');
+  if(n===0) t.innerHTML='Toca los puntos que cumple el curso que estás evaluando.';
+  else if(n<4) t.innerHTML=`<b>${n} de 5.</b> Piénsalo dos veces antes de invertir.`;
+  else t.innerHTML=`<b>${n} de 5.</b> Este curso tiene lo necesario para darte resultados.`;
+}
+</script>
+</body>
+</html>
